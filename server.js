@@ -29,6 +29,16 @@ app.get('/students', (req, res) => {
 	});
 });
 
+app.get('/students/:id', (req, res) => {
+	var _id = req.params.id;
+
+	Student.find({_id}).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
 app.post("/students", (req, res) => {
 	var NewStudent = new Student({
         _id: req.body.uid,
