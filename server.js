@@ -60,7 +60,7 @@ app.post("/students", (req, res) => {
     });
 });
 
-app.post("/teacher", (req, res) => {
+app.post("/teachers", (req, res) => {
 	var NewTeacher = new Teacher({
         _id: req.body.uid,
 		name: req.body.name,
