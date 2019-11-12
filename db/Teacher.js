@@ -6,7 +6,7 @@ const Teacher = mongoose.model('Teacher', {
     gender: String,
     curriculums: Array,
     subjects: Array,
-    lanugages: Array,
+    languages: Array,
     rate: Number,
     location: {
         country: String,
