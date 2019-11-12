@@ -67,7 +67,7 @@ app.post("/teachers", (req, res) => {
 		gender: req.body.gender,
 		curriculums: req.body.curriculums,
 		subjects: req.body.subjects,
-		lanugages: req.body.languages,
+		languages: req.body.languages,
 		rate: req.body.rate,
 		location: {
 			country: req.body.country,
