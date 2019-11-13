@@ -30,10 +30,30 @@ app.get('/students', (req, res) => {
 	});
 });
 
+app.get("/students/:id", (req, res) => {
+	var _id = req.params.id;
+
+	Student.find({_id}).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
 app.get('/teachers', (req, res) => {
 	Teacher.find().then(doc => {
         res.send(doc);
     }).catch(e => {
+		res.send(e);
+	});
+});
+
+app.get("/teachers/:id", (req, res) => {
+	var _id = req.params.id;
+
+	Teacher.find({_id}).then(doc => {
+		res.send(doc);
+	}).catch(e => {
 		res.send(e);
 	});
 });
