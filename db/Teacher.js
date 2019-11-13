@@ -14,7 +14,7 @@ const Teacher = mongoose.model('Teacher', {
 	},
     email: String,
     profilePic: String,
-    certificates: String,
+    certificates: Array,
     workingDays: Array
 });
 
