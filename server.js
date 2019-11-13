@@ -75,7 +75,8 @@ app.post("/teachers", (req, res) => {
 		},
 		email: req.body.email,
 		profilePic: req.body.profilePic,
-		certificates: req.body.certificates
+		certificates: req.body.certificates,
+		workingDays: req.body.workingDays
 	});
 
 	NewTeacher.save().then((doc) => {
