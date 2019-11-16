@@ -106,6 +106,16 @@ app.post("/teachers", (req, res) => {
     });
 });
 
+app.post("/teachers/update/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Teacher.findOneAndUpdate({ _id }, { workingDays: req.body.workingDays }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
 app.delete("/students", (req, res) => {
 	Student.remove().then(doc => {
 		res.send(doc);
