@@ -127,6 +127,16 @@ app.post("/teachers/disable/:id", (req, res) => {
 	});
 });
 
+app.post("/teachers/enable/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Teacher.findOneAndUpdate({ _id }, { approved: true }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
 app.delete("/students", (req, res) => {
 	Student.remove().then(doc => {
 		res.send(doc);
