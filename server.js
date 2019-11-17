@@ -85,6 +85,7 @@ app.post("/teachers", (req, res) => {
         _id: req.body.uid,
 		name: req.body.name,
 		gender: req.body.gender,
+		approved: false,
 		curriculums: req.body.curriculums,
 		subjects: req.body.subjects,
 		languages: req.body.languages,
@@ -109,7 +110,17 @@ app.post("/teachers", (req, res) => {
 app.post("/teachers/update/:id", (req, res) => {
 	var _id = req.params.id;
 	
-	Teacher.findOneAndUpdate({ _id }, { workingDays: req.body.workingDays }).then(doc => {
+	Teacher.findOneAndUpdate({ _id }, { workingDays: req.body.workingDays, approved: true }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
+app.post("/teachers/disable/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Teacher.findOneAndUpdate({ _id }, { approved: false }).then(doc => {
 		res.send(doc);
 	}).catch(e => {
 		res.send(e);
