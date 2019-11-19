@@ -43,7 +43,7 @@ app.get("/students/:id", (req, res) => {
 app.get("/teachers/:limit", (req, res) => {
 	var limit = req.params.limit;
 
-	Teacher.find().limit(limit).then(doc => {
+	Teacher.find().limit(parseInt(limit)).then(doc => {
         res.send(doc);
     }).catch(e => {
 		res.send(e);
