@@ -40,7 +40,7 @@ app.get("/students/:id", (req, res) => {
 	});
 });
 
-app.get("/teachers/:limit", (req, res) => {
+app.get("/teachers/limit/:limit", (req, res) => {
 	var limit = req.params.limit;
 
 	Teacher.find().limit(parseInt(limit)).then(doc => {
