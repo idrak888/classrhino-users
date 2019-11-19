@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     res.send('Hello world');
 });
 
-app.get('/students', (req, res) => {
+app.get("/students", (req, res) => {
 	Student.find().then(doc => {
         res.send(doc);
     }).catch(e => {
@@ -40,7 +40,7 @@ app.get("/students/:id", (req, res) => {
 	});
 });
 
-app.get('/teachers/:limit', (req, res) => {
+app.get("/teachers/:limit", (req, res) => {
 	var limit = req.params.limit;
 
 	Teacher.find().limit(limit).then(doc => {
@@ -50,7 +50,7 @@ app.get('/teachers/:limit', (req, res) => {
 	});
 });
 
-app.get('/teachers/search/:keywords', (req, res) => {
+app.get("/teachers/search/:keywords", (req, res) => {
 	var keywords = req.params.keywords;
 
 	Teacher.find().then(doc => {
