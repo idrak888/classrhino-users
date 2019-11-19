@@ -40,9 +40,22 @@ app.get("/students/:id", (req, res) => {
 	});
 });
 
-app.get('/teachers', (req, res) => {
-	Teacher.find().then(doc => {
+app.get('/teachers/:limit', (req, res) => {
+	var limit = req.params.limit;
+
+	Teacher.find().limit(limit).then(doc => {
         res.send(doc);
+    }).catch(e => {
+		res.send(e);
+	});
+});
+
+app.get('/teachers/search/:keywords', (req, res) => {
+	var keywords = req.params.keywords;
+
+	Teacher.find().then(doc => {
+		var filteredTeachers = doc.filter(teacher => teacher.subjects.indexOf(keywords) != -1 || teacher.curriculums.indexOf(keywords) != -1);
+		res.send(filteredTeachers);
     }).catch(e => {
 		res.send(e);
 	});
