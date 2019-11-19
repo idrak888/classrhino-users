@@ -105,7 +105,8 @@ app.post("/teachers", (req, res) => {
 		rate: req.body.rate,
 		location: {
 			country: req.body.country,
-			timezone: req.body.timezone
+			timezone: req.body.timezone,
+			flag: req.body.flag
 		},
 		email: req.body.email,
 		profilePic: req.body.profilePic,
