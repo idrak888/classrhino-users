@@ -11,7 +11,8 @@ const Teacher = mongoose.model('Teacher', {
     rate: Number,
     location: {
         country: String,
-        timezone: String
+        timezone: String,
+	flag: String
 	},
     email: String,
     profilePic: String,
