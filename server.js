@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const { Student } = require('./db/Student');
 const { Teacher } = require('./db/Teacher');
 
 const app = express();
 var port = process.env.PORT || 3100;
+
+const pathToPublic = path.join(__dirname, './public');
+app.use(express.static(pathToPublic));
 
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -17,10 +21,6 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-
-app.get("/", (req, res) => {
-    res.send('Hello world');
-});
 
 app.get("/students", (req, res) => {
 	Student.find().then(doc => {
@@ -81,7 +81,7 @@ app.post("/students", (req, res) => {
         grade: req.body.grade,
         location: {
             country: req.body.country,
-            timezone: req.body.timezone
+            city: req.body.city
         },
         email: req.body.email
 	});
@@ -105,7 +105,7 @@ app.post("/teachers", (req, res) => {
 		rate: req.body.rate,
 		location: {
 			country: req.body.country,
-			timezone: req.body.timezone,
+			city: req.body.city,
 			flag: req.body.flag
 		},
 		email: req.body.email,
