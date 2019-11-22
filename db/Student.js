@@ -9,7 +9,7 @@ const Student = mongoose.model('Student', {
 	grade: Number,
     location: {
         country: String,
-        timezone: String
+        city: Object
 	},
 	email: String
 });

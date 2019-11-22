@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ClassRhino users API</title>
+    <link rel="icon" href="./classrhino.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            padding: 100px 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 90%;
+            max-width: 1000px;
+        }
+        span {
+            vertical-align: text-top;
+        }
+        .row .col-sm {
+            padding: 0px;
+            display: inline-block;
+            border: 1px solid lightgrey;
+            margin: 6px;
+            background-color: white;
+        }
+        .row .col-sm strong {
+            color: white;
+            padding: 12px;
+            display: block;
+        }
+        .get {
+            background-color: #2E990E;
+        }
+        .post {
+            background-color: rgb(15, 107, 182);
+        }
+        .delete {
+            background-color: rgb(196, 48, 43);
+        }
+        .row .col-sm p {
+            padding: 12px;
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 50px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img width="200" src="https://classrhino-test.firebaseapp.com/static/media/logo.72fa268d.png"/><span>.com</span>
+        <br/>
+        <br/>
+        <h1>ClassRhino users API</h1>
+        <br>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="get">GET /students</strong>
+                <p>Get all students</p>
+            </div>
+            <div class="col-sm">
+                <strong class="get">GET /students/:id</strong>
+                <p>Get student by id</p>
+            </div>
+            <div class="col-sm">
+                <strong class="get">GET /teachers/limit/:limit</strong>
+                <p>Get certain amount of teachers</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="get">GET /teachers/search/:keywords</strong>
+                <p>Search teachers with matching subjects</p>
+            </div>
+            <div class="col-sm">
+                <strong class="get">GET /teachers/:id</strong>
+                <p>Get teacher by id</p>
+            </div>
+            <div class="col-sm">
+                <strong class="post">POST /students</strong>
+                <p>Sign up new student</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="post">POST /teachers/</strong>
+                <p>Sign up new teacher</p>
+            </div>
+            <div class="col-sm">
+                <strong class="post">POST /teachers/update/:id</strong>
+                <p>Update teacher's schedule</p>
+            </div>
+            <div class="col-sm">
+                <strong class="post">POST /teachers/enable/:id</strong>
+                <p>Activate teacher account</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="post">POST /teachers/disable/:id</strong>
+                <p>Deactivate teacher account</p>
+            </div>
+            <div class="col-sm">
+                <strong class="delete">DELETE /students/</strong>
+                <p>Delete all students</p>
+            </div>
+            <div class="col-sm">
+                <strong class="delete">DELETE /students/:id</strong>
+                <p>Delete student by id</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="delete">DELETE /teachers/</strong>
+                <p>Delete all teachers</p>
+            </div>
+            <div class="col-sm">
+                <strong class="delete">DELETE /teachers/:id</strong>
+                <p>Delete teacher by id</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
