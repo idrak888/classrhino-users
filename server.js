@@ -61,7 +61,7 @@ app.get("/teachers/search/:keywords", (req, res) => {
 	});
 });
 
-app.get("/teachers/filter", (req,  res) => {
+app.get("/teachers/filter", (req, res) => {
 	var filters = {
 		country: req.body.country,
 		language: req.body.language,
@@ -76,7 +76,7 @@ app.get("/teachers/filter", (req,  res) => {
 				(filters.gender == '' || teacher.gender == filters.gender) && 
 				(filters.subject == '' || teacher.subjects.indexOf(filters.subject) != -1) &&
 				(filters.curriculum == '' || teacher.curriculums.indexOf(filters.curriculum) != -1) &&
-				(filters.language == '' || teacher.languages.indexOf(filter.language)) &&
+				(filters.language == '' || teacher.languages.indexOf(filters.language)) &&
 				(filters.country == '' || teacher.location.country.toLowerCase() == filters.country.toLowerCase())
 			);
 		});
