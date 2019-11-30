@@ -61,6 +61,31 @@ app.get("/teachers/search/:keywords", (req, res) => {
 	});
 });
 
+app.get("/teachers/filter", (req,  res) => {
+	var filters = {
+		country: req.body.country,
+		language: req.body.language,
+		gender: req.body.gender,
+		curriculum: req.body.curriculum,
+		subject: req.body.subject
+	};
+
+	Teacher.find().then(doc => {
+		var filteredTeachers = teachers.filter(teacher => {
+			return (
+				(filters.gender == '' || teacher.gender == filters.gender) && 
+				(filters.subject == '' || teacher.subjects.indexOf(filters.subject) != -1) &&
+				(filters.curriculum == '' || teacher.curriculums.indexOf(filters.curriculum) != -1) &&
+				(filters.language == '' || teacher.languages.indexOf(filter.language)) &&
+				(filters.country == '' || teacher.location.country.toLowerCase() == filters.country.toLowerCase())
+			);
+		});
+		res.send(filteredTeachers);
+    }).catch(e => {
+		res.send(e);
+	});
+});
+
 app.get("/teachers/:id", (req, res) => {
 	var _id = req.params.id;
 
