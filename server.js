@@ -62,22 +62,15 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.get("/teachers/filter", (req, res) => {
-	var filters = {
-		country: req.body.country,
-		language: req.body.language,
-		gender: req.body.gender,
-		curriculum: req.body.curriculum,
-		subject: req.body.subject
-	};
-
 	Teacher.find().then(doc => {
 		var filteredTeachers = teachers.filter(teacher => {
 			return (
-				(filters.gender == '' || teacher.gender == filters.gender) && 
-				(filters.subject == '' || teacher.subjects.indexOf(filters.subject) != -1) &&
-				(filters.curriculum == '' || teacher.curriculums.indexOf(filters.curriculum) != -1) &&
-				(filters.language == '' || teacher.languages.indexOf(filters.language)) &&
-				(filters.country == '' || teacher.location.country.toLowerCase() == filters.country.toLowerCase())
+				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
+				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) 
+
+				// (req.body.gender == '' || teacher.gender == req.body.gender) && 
+				// (req.body.language == '' || teacher.languages.indexOf(req.body.language)) &&
+				// (req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
 			);
 		});
 		res.send(filteredTeachers);
