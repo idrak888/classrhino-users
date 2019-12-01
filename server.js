@@ -61,7 +61,7 @@ app.get("/teachers/search/:keywords", (req, res) => {
 	});
 });
 
-app.get("/teachers/filter", (req, res) => {
+app.post("/teachers/filter", (req, res) => {
 	res.send(req.body);
 // 	var gender = req.params.gender;
 //  	Teacher.find({gender}).then(doc => {
