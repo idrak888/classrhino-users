@@ -62,6 +62,7 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.get("/teachers/filter", (req, res) => {
+	res.send(req.body.gender);
 	Teacher.find().then(doc => {
 		var filteredTeachers = doc.filter(teacher => {
 			return (
