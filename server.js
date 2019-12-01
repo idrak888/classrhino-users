@@ -74,7 +74,7 @@ app.get("/teachers/filter", (req, res) => {
 // 			);
 // 		});
 		
-		res.send(filteredTeachers);
+		res.send(doc);
     }).catch(e => {
 		res.send(e);
 	});
