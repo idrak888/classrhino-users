@@ -62,7 +62,6 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.post("/teachers/filter", (req, res) => {
-	res.send(req.body);
  	Teacher.find().then(doc => {
  		var filteredTeachers = doc.filter(teacher => {
  			return (
@@ -74,7 +73,7 @@ app.post("/teachers/filter", (req, res) => {
  			);
 		});
 		
-		res.send(doc);
+		res.send(filteredTeachers);
     }).catch(e => {
 		res.send(e);
 	});
