@@ -62,7 +62,7 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.get("/teachers/filter", (req, res) => {
-	var gender = req.body.gender;
+	var gender = req.params.gender;
  	Teacher.find({gender}).then(doc => {
 // 		var filteredTeachers = doc.filter(teacher => {
 // 			return (
