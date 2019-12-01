@@ -62,7 +62,6 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.get("/teachers/filter", (req, res) => {
-	res.send(req.body.gender);
 	Teacher.find().then(doc => {
 		var filteredTeachers = doc.filter(teacher => {
 			return (
@@ -73,7 +72,7 @@ app.get("/teachers/filter", (req, res) => {
 // 				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
 			);
 		});
-		res.send(filteredTeachers);
+		res.send("filteredTeachers");
     }).catch(e => {
 		res.send(e);
 	});
