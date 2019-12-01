@@ -62,22 +62,23 @@ app.get("/teachers/search/:keywords", (req, res) => {
 });
 
 app.get("/teachers/filter", (req, res) => {
-	var gender = req.params.gender;
- 	Teacher.find({gender}).then(doc => {
-// 		var filteredTeachers = doc.filter(teacher => {
-// 			return (
-// // 				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
-// // 				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) &&
-// 				(gender == '' || teacher.gender == gender) 
-// // 				(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
-// // 				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
-// 			);
+	res.send(req.body);
+// 	var gender = req.params.gender;
+//  	Teacher.find({gender}).then(doc => {
+//  		var filteredTeachers = doc.filter(teacher => {
+//  			return (
+// 				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
+//  				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) &&
+//  				(gender == '' || teacher.gender == gender) 
+//  				(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
+//  				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
+//  			);
 // 		});
 		
-		res.send(doc);
-    }).catch(e => {
-		res.send(e);
-	});
+// 		res.send(doc);
+//     }).catch(e => {
+// 		res.send(e);
+// 	});
 });
 
 app.get("/teachers/:id", (req, res) => {
