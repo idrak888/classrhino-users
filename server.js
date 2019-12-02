@@ -63,17 +63,17 @@ app.get("/teachers/search/:keywords", (req, res) => {
 
 app.post("/teachers/filter", (req, res) => {
  	Teacher.find().then(doc => {
-//  		var filteredTeachers = doc.filter(teacher => {
-//  			return (
+ 		var filteredTeachers = doc.filter(teacher => {
+ 			return (
+// 				(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
+//  				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase()) &&
 // 				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
 //  				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) &&
-//  				(req.body.gender == '' || teacher.gender == req.body.gender) 
-//  				(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
-//  				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
-//  			);
-// 		});
+ 				(req.body.gender == '' || teacher.gender == req.body.gender) 
+ 			);
+		});
 		
-		res.send(doc);
+		res.send(filteredTeachers);
     }).catch(e => {
 		res.send(e);
 	});
