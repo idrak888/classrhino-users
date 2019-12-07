@@ -4,6 +4,10 @@ const Teacher = mongoose.model('Teacher', {
     _id: String,
 	name: String,
     gender: String,
+    email: String,
+    profilePic: String,
+    certificates: Array,
+    workingDays: Array,
     approved: Boolean,
     curriculums: Array,
     subjects: Array,
@@ -14,10 +18,8 @@ const Teacher = mongoose.model('Teacher', {
         city: Object,
 	    flag: String
 	},
-    email: String,
-    profilePic: String,
-    certificates: Array,
-    workingDays: Array
+    upcomingClasses: Array,
+    completedClasses: Array
 });
 
 module.exports = {

@@ -61,19 +61,20 @@ app.get("/teachers/search/:keywords", (req, res) => {
 	});
 });
 
-app.get("/teachers/filter", (req, res) => {
+app.post("/teachers/filter", (req, res) => {
 	Teacher.find().then(doc => {
 		var filteredTeachers = doc.filter(teacher => {
 			return (
+			   	(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
+				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase()) &&
 				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
 				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) &&
-				(req.body.gender == '' || teacher.gender == req.body.gender) && 
-				(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
-				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase())
+				(req.body.gender == '' || teacher.gender == req.body.gender) 
 			);
-		});
-		res.send(filteredTeachers);
-    }).catch(e => {
+	    });
+	   
+	   	res.send(filteredTeachers);
+	}).catch(e => {
 		res.send(e);
 	});
 });
@@ -93,14 +94,16 @@ app.post("/students", (req, res) => {
         _id: req.body.uid,
 		name: req.body.name,
         gender: req.body.gender,
+        email: req.body.email,
         age: req.body.age,
         curriculum: req.body.curriculum,
         grade: req.body.grade,
         location: {
             country: req.body.country,
             city: req.body.city
-        },
-        email: req.body.email
+		},
+		upcomingClasses: [],
+		completedClasses: []
 	});
 
 	NewStudent.save().then((doc) => {
@@ -115,6 +118,10 @@ app.post("/teachers", (req, res) => {
         _id: req.body.uid,
 		name: req.body.name,
 		gender: req.body.gender,
+		email: req.body.email,
+		profilePic: req.body.profilePic,
+		certificates: req.body.certificates,
+		workingDays: req.body.workingDays,
 		approved: false,
 		curriculums: req.body.curriculums,
 		subjects: req.body.subjects,
@@ -125,10 +132,8 @@ app.post("/teachers", (req, res) => {
 			city: req.body.city,
 			flag: req.body.flag
 		},
-		email: req.body.email,
-		profilePic: req.body.profilePic,
-		certificates: req.body.certificates,
-		workingDays: req.body.workingDays
+		upcomingClasses: [],
+		completedClasses: []
 	});
 
 	NewTeacher.save().then((doc) => {
@@ -136,6 +141,46 @@ app.post("/teachers", (req, res) => {
 	}).catch(e => {
         res.send(e);
     });
+});
+
+app.post("/teachers/newclass/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Teacher.findOneAndUpdate({ _id }, { $push: { upcomingClasses: req.body.class } }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
+app.post("/teachers/completed/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Teacher.findOneAndUpdate({ _id }, { $pull: { upcomingClasses: req.body.class }, $push: { completedClasses: req.body.class } }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
+app.post("/students/newclass/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Student.findOneAndUpdate({ _id }, { $push: { upcomingClasses: req.body.class } }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
+});
+
+app.post("/students/completed/:id", (req, res) => {
+	var _id = req.params.id;
+	
+	Student.findOneAndUpdate({ _id }, { $pull: { upcomingClasses: req.body.class }, $push: { completedClasses: req.body.class } }).then(doc => {
+		res.send(doc);
+	}).catch(e => {
+		res.send(e);
+	});
 });
 
 app.post("/teachers/update/:id", (req, res) => {

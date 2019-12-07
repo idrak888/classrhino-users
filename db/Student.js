@@ -4,14 +4,16 @@ const Student = mongoose.model('Student', {
     _id: String,
 	name: String,
     gender: String,
+	email: String,
 	age: Number,
     curriculum: String,
 	grade: Number,
     location: {
         country: String,
         city: Object
-	},
-	email: String
+    },
+    upcomingClasses: Array,
+    completedClasses: Array
 });
 
 module.exports = {
