@@ -53,7 +53,7 @@
 </head>
 <body>
     <div class="container">
-        <img width="200" src="https://classrhino-test.firebaseapp.com/static/media/logo.72fa268d.png"/><span>.com</span>
+        <img width="200" src="https://firebasestorage.googleapis.com/v0/b/classrhino-979de.appspot.com/o/assets%2Flogo.png?alt=media&token=c4f30ce1-9c03-40cf-aa66-ecea5001fede"/><span>.com</span>
         <br/>
         <br/>
         <h1>ClassRhino users API</h1>
@@ -88,6 +88,10 @@
         </div>
         <div class="row">
             <div class="col-sm">
+                <strong class="post">POST /teachers/filter</strong>
+                <p>Get filtered teachers list</p>
+            </div>
+            <div class="col-sm">
                 <strong class="post">POST /teachers/</strong>
                 <p>Sign up new teacher</p>
             </div>
@@ -95,15 +99,25 @@
                 <strong class="post">POST /teachers/update/:id</strong>
                 <p>Update teacher's schedule</p>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm">
                 <strong class="post">POST /teachers/enable/:id</strong>
                 <p>Activate teacher account</p>
             </div>
-        </div>
-        <div class="row">
             <div class="col-sm">
                 <strong class="post">POST /teachers/disable/:id</strong>
                 <p>Deactivate teacher account</p>
+            </div>
+            <div class="col-sm">
+                <strong class="post">POST /(teachers/students)/newclass/:id</strong>
+                <p>Add new booked class</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <strong class="post">POST /(teachers/students)/completed/:id</strong>
+                <p>Update completed class</p>
             </div>
             <div class="col-sm">
                 <strong class="delete">DELETE /students/</strong>
