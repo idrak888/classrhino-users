@@ -9,8 +9,8 @@ const Teacher = mongoose.model('Teacher', {
     certificates: Array,
     workingDays: Array,
     approved: Boolean,
-    curriculums: Array,
     subjects: Array,
+    grades: Array,
     languages: Array,
     rate: Number,
     location: {

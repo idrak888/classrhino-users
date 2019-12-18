@@ -96,7 +96,6 @@ app.post("/students", (req, res) => {
         gender: req.body.gender,
         email: req.body.email,
         age: req.body.age,
-        curriculum: req.body.curriculum,
         grade: req.body.grade,
         location: {
             country: req.body.country,
@@ -123,8 +122,8 @@ app.post("/teachers", (req, res) => {
 		certificates: req.body.certificates,
 		workingDays: req.body.workingDays,
 		approved: false,
-		curriculums: req.body.curriculums,
 		subjects: req.body.subjects,
+		grades: req.body.grades,
 		languages: req.body.languages,
 		rate: req.body.rate,
 		location: {
