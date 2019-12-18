@@ -68,7 +68,7 @@ app.post("/teachers/filter", (req, res) => {
 			   	(req.body.language == '' || teacher.languages.indexOf(req.body.language) != -1) &&
 				(req.body.country == '' || teacher.location.country.toLowerCase() == req.body.country.toLowerCase()) &&
 				(req.body.subject == '' || teacher.subjects.indexOf(req.body.subject) != -1) &&
-				(req.body.curriculum == '' || teacher.curriculums.indexOf(req.body.curriculum) != -1) &&
+				(req.body.grade == '' || teacher.grades.indexOf(req.body.grade) != -1) &&
 				(req.body.gender == '' || teacher.gender == req.body.gender) 
 			);
 	    });
