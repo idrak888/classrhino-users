@@ -95,7 +95,7 @@ app.post("/students", (req, res) => {
 		name: req.body.name,
         gender: req.body.gender,
         email: req.body.email,
-        age: req.body.age,
+        birthDate: req.body.birthDate,
         grade: req.body.grade,
         location: {
             country: req.body.country,

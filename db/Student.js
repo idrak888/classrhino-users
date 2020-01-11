@@ -5,7 +5,7 @@ const Student = mongoose.model('Student', {
 	name: String,
     gender: String,
 	email: String,
-	age: Number,
+	birthDate: String,
 	grade: Number,
     location: {
         country: String,
